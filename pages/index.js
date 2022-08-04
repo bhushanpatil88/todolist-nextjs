@@ -13,7 +13,7 @@ export default function Home(props) {
 		
 		try {
 		
-				const { data } = await axios.post(url, newTask);
+				const { data } = await axios.post(`/api/task`, newTask);
 				setTasks((prev) => [...prev, data.data]);
 				// console.log(data.message);
 			
@@ -24,7 +24,7 @@ export default function Home(props) {
 
 	const deleteTask = async (id) => {
 		try {
-			const { data } = await axios.delete(url + "/" + id);
+			const { data } = await axios.delete(`/api/task/${id}`);
 			setTasks((prev) => prev.filter((task) => task._id !== id));
 			// console.log(data.message);
 		} catch (error) {
