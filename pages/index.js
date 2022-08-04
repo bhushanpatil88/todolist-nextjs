@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import App from '../components/App'
+import dbConnect from '../utils/dbConnect'
+import Task from '../models/Task'
 
 const url = "http://localhost:3000/api/task";
 
@@ -38,10 +40,12 @@ export default function Home(props) {
 }
 
 export const getServerSideProps = async () => {
-	const { data } = await axios.get(url);
+	
+	await dbConnect();
+	const data = await Task.find().lean();
 	return {
 		props: {
-			tasks: data.data,
+			tasks: JSON.parse(JSON.stringify(data)),
 		},
 	};
 };
