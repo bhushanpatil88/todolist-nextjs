@@ -3,6 +3,7 @@ import axios from "axios";
 import App from '../components/App'
 import dbConnect from '../utils/dbConnect'
 import Task from '../models/Task'
+import Head from "next/head";
 
 const url = "http://localhost:3000/api/task";
 
@@ -35,7 +36,13 @@ export default function Home(props) {
 	};
 
 	return (
+		<>
+		<Head>
+			<title>TodoList</title>
+
+		</Head>
 		<App tasks = {tasks} onAdd = {addTask}  onDelete = {deleteTask}/>
+		</>
 	);
 }
 

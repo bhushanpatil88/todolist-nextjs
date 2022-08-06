@@ -16,6 +16,7 @@ function TaskList(props) {
             onDelete = {props.onDelete}
             >
             {task.task}
+            
             </TaskItem>
         ))}
     </ul>

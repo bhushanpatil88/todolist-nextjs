@@ -20,6 +20,10 @@ function TodoForm(props) {
             setIsValid(false);
             return;
         }
+        if(enteredTask.trim().length>50){
+            setIsValid(false);
+            return;
+        }
         const Taskobj = {
             task:enteredTask,
         }
